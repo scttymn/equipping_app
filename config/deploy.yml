@@ -1,0 +1,29 @@
+service: equipping
+image: scottymoon/equipping-app
+servers:
+  web:
+    hosts:
+      - 167.172.151.74
+    labels:
+      traefik.http.routers.equipping_secure.entrypoints: websecure
+      traefik.http.routers.equipping_secure.rule: Host(`equipping.app`)
+      traefik.http.routers.equipping_secure.tls: true
+
+registry:
+  username: scottymoon
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  secret:
+    - RAILS_MASTER_KEY
+
+traefik:
+  options:
+    publish:
+      - "443:443"
+  args:
+    entryPoints.websecure.address: ":443"
+
+volumes:
+  - "storage:/rails/storage"
