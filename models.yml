@@ -1,0 +1,130 @@
+models:
+  Person:
+    attributes:
+      - first_name: # First name of the person
+      - last_name: # Last name of the person
+      - email: # Email address for contact
+      - phone_number: # Phone number for contact 
+      - gender: # Gender of the person (male, female, other)
+      - date_of_birth: # Date of birth
+      - address_id: # Foreign key to the associated Address
+
+  Organization:
+    attributes:
+      - name: # Name of the organization
+      - parent_organization_id: # Foreign key to the parent organization (if applicable)
+      - address_id: # Foreign key to the associated Address 
+
+  Address:
+    attributes:
+      - address_line_1:  # Primary address line (street address, PO Box, etc.)
+      - address_line_2:  # Secondary address line (suite, apartment, etc.)
+      - address_line_3: # Additional address line (if needed)
+      - city_or_town:
+      - state:  # Optional for non-US addresses
+      - postal_code:  # Can be used for zip codes or other postal code formats
+      - country: # Country associated with the address
+      - region: # Optional field to accommodate different administrative divisions
+      - latitude: # Latitude coordinate of the address
+      - longitude: # Longitude coordinate of the address
+
+  OrganizationPerson:
+    attributes:
+      - person_id: # Foreign key to the associated Person
+      - organization_id: # Foreign key to the associated Organization
+      - title: # Title or position within the organization
+      - type: # Type of relationship (employee, member, or visitor) 
+
+  Family:
+    attributes:
+      - name: # Name of the family 
+      - address_id: # Foreign key to the associated Address
+
+  FamilyMember:
+    attributes:
+      - person_id: # Foreign key to the associated Person
+      - family_id: # Foreign key to the associated Family
+      - is_parent: # Boolean flag indicating if the person is a parent in the family
+
+  Guardianship:
+    attributes:
+      - person_id: # Foreign key to the associated Person (child)
+      - guardian_id: # Foreign key to the associated Person (guardian)
+
+  Group:
+    attributes:
+      - name: # Name of the group
+      - description: # Description of the group's purpose
+      - created_by_id: # Polymorphic association - ID of the creator (Person or Organization)
+      - created_by_type: # Polymorphic association - Type of the creator (Person or Organization)
+      - step_id: # Foreign key to the associated Step
+      - event_id: # Foreign key to the associated Event (for recurring schedule/meeting)
+      - is_private: # Boolean flag indicating if the group is private
+
+  GroupMember:
+    attributes:
+      - person_id: # Foreign key to the associated Person
+      - group_id: # Foreign key to the associated Group
+      - is_leader: # Boolean flag indicating if the person is a leader of the group
+
+  Path:
+    attributes:
+      - name: # Name of the path
+      - description: # Description of the path's purpose
+      - created_by_id: # Polymorphic association - ID of the creator (Person or Organization)
+      - created_by_type: # Polymorphic association - Type of the creator (Person or Organization)
+
+  Step:
+    attributes:
+      - name: # Name of the step
+      - description: # Description of the step's purpose
+      - category: # Category or type of the step
+      - path_id: # Foreign key to the associated Path
+      - resources: # Resources related to the step
+
+  Event:
+    attributes:
+      - start_at: # Date and time the event starts (for recurring events, this is the first occurrence)
+      - end_at: # Date and time the event ends (can be null for ongoing events)
+      - recurrence_rule: # Rule for recurrence (e.g., 'weekly', 'monthly', 'yearly')
+      - recurrence_frequency: # How often it recurs (e.g., every 2 weeks)
+      - recurrence_end_date: # Date recurrence ends (can be null for indefinite recurrence)
+      - postponed_until: # Date the event is postponed until (can be null)
+
+  Attendance:
+    attributes:
+      - person_id: # Foreign key to the associated Person
+      - event_id: # Foreign key to the associated Event
+      - attended_at: # Date and time when the person attended the event
+
+  Invitation:
+    attributes:
+      - email: # Email address of the invitee
+      - invited_by_id: # Foreign key to the Person who sent the invite
+      - token: # Unique token for secure invitation acceptance
+      - status: # Status of the invitation (e.g., 'pending', 'accepted', 'rejected')
+      - expires_at: # Date and time when the invitation expires
+      - invitable_id: # Polymorphic association - ID of the associated model (Group or Organization)
+      - invitable_type: # Polymorphic association - Type of the associated model (Group or Organization)
+
+  AuthToken:
+    attributes:
+      - person_id: # Foreign key to the associated Person
+      - token: # Unique token for authentication
+      - expires_at: # Date and time when the token expires
+
+  Message:
+    attributes:
+      - messageable_id: # Polymorphic association - ID of the associated model (Group or Organization)
+      - messageable_type: # Polymorphic association - Type of the associated model (Group or Organization)
+      - parent_message_id: # Foreign key to the associated Message (for replies, optional)
+      - sender_id: # Foreign key to the associated Person (sender)
+      - content: # Content of the message
+      - reply_type: # Controls reply visibility (none, public, private)
+
+  Subscription:
+    attributes:
+      - person_id: # Foreign key to the associated Person
+      - stripe_customer_id: # ID of the customer in Stripe
+      - stripe_subscription_id: # ID of the subscription in Stripe
+      - status: # Status of the subscription (e.g., 'active', 'canceled', 'past_due')
