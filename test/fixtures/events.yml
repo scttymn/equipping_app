@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_at: 2024-09-04 01:36:31
+  end_at: 2024-09-04 01:36:31
+  recurrence_rule: MyString
+  recurrence_frequency: 1
+  recurrence_end_date: 2024-09-04
+  postponed_until: 2024-09-04 01:36:31
+
+two:
+  start_at: 2024-09-04 01:36:31
+  end_at: 2024-09-04 01:36:31
+  recurrence_rule: MyString
+  recurrence_frequency: 1
+  recurrence_end_date: 2024-09-04
+  postponed_until: 2024-09-04 01:36:31

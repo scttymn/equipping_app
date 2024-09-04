@@ -1,0 +1,32 @@
+<div id="<%= dom_id invitation %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= invitation.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Invited by:</strong>
+    <%= invitation.invited_by_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Token:</strong>
+    <%= invitation.token %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= invitation.status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Expires at:</strong>
+    <%= invitation.expires_at %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Invitable:</strong>
+    <%= invitation.invitable_id %>
+  </p>
+
+</div>

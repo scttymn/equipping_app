@@ -1,0 +1,17 @@
+<div id="<%= dom_id auth_token %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Person:</strong>
+    <%= auth_token.person_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Token:</strong>
+    <%= auth_token.token %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Expires at:</strong>
+    <%= auth_token.expires_at %>
+  </p>
+
+</div>

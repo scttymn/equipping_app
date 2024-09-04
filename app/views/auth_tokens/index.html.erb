@@ -1,0 +1,21 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Auth tokens" %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Auth tokens</h1>
+    <%= link_to "New auth token", new_auth_token_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div id="auth_tokens" class="min-w-full">
+    <% @auth_tokens.each do |auth_token| %>
+      <%= render auth_token %>
+      <p>
+        <%= link_to "Show this auth token", auth_token, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      </p>
+    <% end %>
+  </div>
+</div>

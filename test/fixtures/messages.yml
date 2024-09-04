@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  messageable: one
+  messageable_type: Messageable
+  parent_message: one
+  sender: one
+  content: MyText
+  reply_type: 1
+
+two:
+  messageable: two
+  messageable_type: Messageable
+  parent_message: two
+  sender: two
+  content: MyText
+  reply_type: 1

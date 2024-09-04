@@ -1,0 +1,27 @@
+<div id="<%= dom_id message %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Messageable:</strong>
+    <%= message.messageable_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Parent message:</strong>
+    <%= message.parent_message_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Sender:</strong>
+    <%= message.sender_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Content:</strong>
+    <%= message.content %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Reply type:</strong>
+    <%= message.reply_type %>
+  </p>
+
+</div>
