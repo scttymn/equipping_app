@@ -3,7 +3,11 @@ class CotfcGroupsController < ApplicationController
 
   # GET /cotfc_groups or /cotfc_groups.json
   def index
-    @cotfc_groups = CotfcGroup.where(active: true).order(:host)
+    if params[:edit] == "true"
+      @cotfc_groups = CotfcGroup.all.order(:host)
+    else
+      @cotfc_groups = CotfcGroup.where(active: true).order(:host)
+    end
   end
 
   # GET /cotfc_groups/1 or /cotfc_groups/1.json
@@ -65,6 +69,6 @@ class CotfcGroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cotfc_group_params
-      params.require(:cotfc_group).permit(:host, :subject, :day, :time, :location, :child_friendly, :intended_audience, :form_url, :photo_url, :description)
+      params.require(:cotfc_group).permit(:host, :subject, :active, :day, :time, :location, :child_friendly, :intended_audience, :form_url, :photo_url, :description)
     end
 end
