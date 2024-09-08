@@ -1,0 +1,44 @@
+<div class="container">
+  <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg">
+    <thead class="text-white">
+      <tr class="bg-black flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+        <th class="p-3 text-left">Host</th>
+        <th class="p-3 text-left">Group</th>
+        <th class="p-3 text-left">Location</th>
+        <th class="p-3 text-left">Day</th>
+        <th class="p-3 text-left" width="110px">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="flex-1 sm:flex-none">
+      <% @cotfc_groups.each do |cotfc_group| %>
+      <tr class="flex flex-col flex-no wrap sm:table-row mb-8 sm:mb-0 shadow-lg sm:shadow-none">
+        <td class="border-grey-light border hover:bg-gray-100 p-3">
+          <h1 class="mb-2 font-extrabold leading-none">Host:</h1>
+          <%= cotfc_group.host%>
+        </td>
+        <td class="border-grey-light border hover:bg-gray-100 p-3">
+          <h1 class="mb-2 font-extrabold leading-none">Group:</h1>
+          <p><span class="font-bold"><%= cotfc_group.subject%>:</span> <%= cotfc_group.description%></p>
+          <p class="my-4">
+            <span class="rounded-2xl bg-green-300 py-2 px-3 text-xs uppercase"><%= cotfc_group.intended_audience %></span>
+            <% if cotfc_group.child_friendly %>
+              <span class="rounded-2xl bg-pink-400 py-2 px-3 text-xs uppercase">Child Friendly</span>
+            <% end %>
+          </p>
+        </td>
+        <td class="border-grey-light border hover:bg-gray-100 p-3">
+          <h1 class="mb-2 font-extrabold leading-none">Location:</h1>
+          <%= cotfc_group.location%>
+        </td>
+        <td class="border-grey-light border hover:bg-gray-100 p-3">
+          <h1 class="mb-2 font-extrabold leading-none">Day:</h1>
+          <%= cotfc_group.day%> <%= cotfc_group.time%>
+        </td>
+        <td class="border-grey-light border p-3">
+          <%= link_to "Signup", cotfc_group.form_url, target: "_blank", class: "rounded-lg py-2 px-3 bg-gray-300 inline-block font-medium" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

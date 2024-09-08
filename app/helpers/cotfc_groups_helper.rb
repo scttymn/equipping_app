@@ -1,0 +1,2 @@
+module CotfcGroupsHelper
+end

@@ -1,0 +1,72 @@
+<%= form_with(model: cotfc_group, class: "contents") do |form| %>
+  <% if cotfc_group.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(cotfc_group.errors.count, "error") %> prohibited this cotfc_group from being saved:</h2>
+
+      <ul>
+        <% cotfc_group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :host %>
+    <%= form.text_field :host, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :subject %>
+    <%= form.text_field :subject, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :active %>
+    <%= form.check_box :active, class: "block mt-2 h-5 w-5" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :day %>
+    <%= form.text_field :day, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :time %>
+    <%= form.text_field :time, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :location %>
+    <%= form.text_field :location, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :child_friendly %>
+    <%= form.check_box :child_friendly, class: "block mt-2 h-5 w-5" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :intended_audience %>
+    <%= form.text_field :intended_audience, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :form_url %>
+    <%= form.text_field :form_url, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :photo_url %>
+    <%= form.text_field :photo_url, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

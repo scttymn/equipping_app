@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cotfc_groups
   resources :subscriptions
   resources :messages
   resources :auth_tokens

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_04_063641) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_08_014700) do
   create_table "addresses", force: :cascade do |t|
     t.string "address_line_1"
     t.string "address_line_2"
@@ -43,6 +43,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_04_063641) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_auth_tokens_on_person_id"
+  end
+
+  create_table "cotfc_groups", force: :cascade do |t|
+    t.string "host"
+    t.string "subject"
+    t.string "day"
+    t.string "time"
+    t.string "location"
+    t.boolean "child_friendly"
+    t.string "intended_audience"
+    t.string "form_url"
+    t.string "photo_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active", default: true
   end
 
   create_table "events", force: :cascade do |t|
