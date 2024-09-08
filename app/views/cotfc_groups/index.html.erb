@@ -36,6 +36,9 @@
         </td>
         <td class="border-grey-light border p-3">
           <%= link_to "Signup", cotfc_group.form_url, target: "_blank", class: "rounded-lg py-2 px-3 bg-gray-300 inline-block font-medium" %>
+          <% if params[:edit] == 'true' %>
+            <%= link_to "Edit", edit_cotfc_group_path(cotfc_group), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+          <% end %>
         </td>
       </tr>
       <% end %>
